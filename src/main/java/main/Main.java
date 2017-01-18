@@ -14,15 +14,22 @@ public class Main {
 	public static void main(String[] args) {
 
 		User user = new User();
+		user.setId(1);
 		user.setName("Ivan");
 		user.setEmail("ivan@gmail.com");
 		user.setPassword("superpass");
 		
-		Author author = new Author("Aaa", "Bbb");
+		Author author = new Author();
+		author.setId(1);
+		author.setFirstName("J.");
+		author.setLastName("Rolling");
 		
-		Category category = new Category("Drama");
+		Category category = new Category();
+		category.setId(1);
+		category.setTypeOfCategory("Advanture");
 		
 		Book book = new Book();
+		book.setId(1);
 		book.setAuthor(author);
 		book.setCategory(category);
 		book.setDescription("Very interesting book");
