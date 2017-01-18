@@ -8,7 +8,7 @@
 <!-- 	клас драйвера який буде використовуватись -->
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 <!-- 	посилання для з'єднання з БД після останнього слеша назва БД, має бути вже створена, можна без таблиць -->
-			<property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1:3306/BookShop" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/BookShop" />
 <!-- 	логін БД -->
 			<property name="hibernate.connection.username" value="root" />
 <!-- 	пароль БД -->
