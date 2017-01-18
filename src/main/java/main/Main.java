@@ -1,5 +1,9 @@
 package main;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import entities.Author;
 import entities.Book;
 import entities.Category;
@@ -14,10 +18,25 @@ public class Main {
 		user.setEmail("ivan@gmail.com");
 		user.setPassword("superpass");
 		
-		Book book = new Book();
-		book.setAuthor(new Author("Aaa", "Bbb"));
-		book.setCategory(new Category(""));
+		Author author = new Author("Aaa", "Bbb");
 		
+		Category category = new Category("Drama");
+		
+		Book book = new Book();
+		book.setAuthor(author);
+		book.setCategory(category);
+		book.setDescription("Very interesting book");
+		book.setName("Harry Potter");
+		
+		final EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
+		EntityManager em = factory.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(user);
+		em.persist(book);
+		em.getTransaction().commit();
+		
+		em.close();
+		factory.close();
 	}
 
 }

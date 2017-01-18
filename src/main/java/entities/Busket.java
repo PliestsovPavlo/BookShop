@@ -2,7 +2,7 @@ package entities;
 
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class Busket {
 	
 //	private 

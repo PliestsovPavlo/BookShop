@@ -1,23 +1,28 @@
 package entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="author")
 public class Author extends AbstractEntity{
 	
+	@Column(name="firstName")
 	private String firstName;
+	
+	@Column(name="lastName")
 	private String lastName;
 	
 	
 	
 	public Author(String firstName, String lastName) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
 	
 	public Author() {
-		super();
+
 	}
 
 	public String getFirstName() {

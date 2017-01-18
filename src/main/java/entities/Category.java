@@ -1,11 +1,15 @@
 package entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="category")
 public class Category extends AbstractEntity{
 	
-	private String typeOfGenre;
+	@Column(name="typeOfCategory")
+	private String typeOfCategory;
 	
 	
 
@@ -13,22 +17,22 @@ public class Category extends AbstractEntity{
 		super();
 	}
 
-	public Category(String typeOfGenre) {
+	public Category(String typeOfCategory) {
 		super();
-		this.typeOfGenre = typeOfGenre;
+		this.typeOfCategory = typeOfCategory;
 	}
 
-	public String getTypeOfGenre() {
-		return typeOfGenre;
+	public String getTypeOfCategory() {
+		return typeOfCategory;
 	}
 
-	public void setTypeOfGenre(String typeOfGenre) {
-		this.typeOfGenre = typeOfGenre;
+	public void setTypeOfCategory(String typeOfCategory) {
+		this.typeOfCategory = typeOfCategory;
 	}
 
 	@Override
 	public String toString() {
-		return "Genre [typeOfGenre=" + typeOfGenre + "]";
+		return "Genre [typeOfGenre=" + typeOfCategory + "]";
 	}
 
 	
