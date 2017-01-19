@@ -31,33 +31,32 @@ public class Main {
 		user.setPassword("superpass");
 		
 		
-//		Order order = new Order();
-		
-//		Book book = em.find(Book.class, 1);
-//		List<Book>books= new ArrayList<>();
-//		books.add(book);
-//		order.setBooks(books);
 		
 		
 		Author author = new Author();
-		author.setFirstName("J.");
-		author.setLastName("Rolling");
+		author.setFirstName("Halileu");
+		author.setLastName("Accient");
 		
 		Category category = new Category();
-		category.setTypeOfCategory("Advanture");
+		category.setTypeOfCategory("Sience");
 		
 		Book book = new Book();
 		book.setAuthor(author);
 		book.setCategory(category);
-		book.setDescription("Very interesting book");
-		book.setName("Harry Potter");
+		book.setDescription("Not interesting book");
+		book.setName("Math");
 		
-		
+		Order order = new Order();
+		book = em.find(Book.class, 1);
+		order.setBook(book);
+//		order.setConfirmed(false);
 		
 		em.persist(user);
 		em.persist(category);
 		em.persist(author);
 		em.persist(book);
+		em.persist(order);
+		
 		em.getTransaction().commit();
 		
 		em.close();

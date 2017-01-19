@@ -1,36 +1,56 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-import javax.persistence.OneToMany;
 
+@Entity
+@Table(name="order")
 public class Order extends AbstractEntity{
 	
-	@OneToMany(mappedBy="order")
-	private List<Book> books = new ArrayList<>();
+	@Column(columnDefinition="TINYINT(1)")
+	private boolean confirmed = false;
+	
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id_book")
+	private Book book;
 
 	public Order() {
+	}
+
+	public Order(boolean confirmed, Book book) {
 		super();
+		this.confirmed = confirmed;
+		this.book = book;
 	}
 
-	public Order(List<Book> books) {
-		super();
-		this.books = books;
+	
+
+	public Boolean getConfirmed() {
+		return confirmed;
 	}
 
-	public List<Book> getBooks() {
-		return books;
+	public void setConfirmed(Boolean confirmed) {
+		this.confirmed = confirmed;
 	}
 
-	public void setBooks(List<Book> books) {
-		this.books = books;
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
 	}
 
 	@Override
 	public String toString() {
-		return "Order [books=" + books + "]";
+		return "Order [confirmed=" + confirmed + ", book=" + book + "]";
 	}
+
 	
 	
 

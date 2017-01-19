@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,20 +17,16 @@ public class User extends AbstractEntity{
 	private String email;
 	private String password;
 	
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_busket")
-	private Busket busket;
-	
 	@OneToMany(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_order")
 	private List<Order> orders = new ArrayList<>();
 	
-	
-	public User(String name, String email, String password) {
+	public User(String name, String email, String password, List<Order> orders) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
+		this.orders = orders;
 	}
 
 	public User() {
@@ -61,14 +56,7 @@ public class User extends AbstractEntity{
 		this.password = password;
 	}
 
-	public Busket getBusket() {
-		return busket;
-	}
-
-	public void setBusket(Busket busket) {
-		this.busket = busket;
-	}
-	
+		
 	public List<Order> getOrders() {
 		return orders;
 	}
@@ -79,7 +67,7 @@ public class User extends AbstractEntity{
 
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", email=" + email + ", password=" + password + "]";
+		return "User [name=" + name + ", email=" + email + ", password=" + password + ", orders=" + orders + "]";
 	}
 	
 	
