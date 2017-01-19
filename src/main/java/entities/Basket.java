@@ -9,8 +9,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="order")
-public class Order extends AbstractEntity{
+@Table(name="basket")
+public class Basket extends AbstractEntity{
 	
 	@Column(columnDefinition="TINYINT(1)")
 	private boolean confirmed = false;
@@ -19,10 +19,10 @@ public class Order extends AbstractEntity{
 	@JoinColumn(name="id_book")
 	private Book book;
 
-	public Order() {
+	public Basket() {
 	}
 
-	public Order(boolean confirmed, Book book) {
+	public Basket(boolean confirmed, Book book) {
 		super();
 		this.confirmed = confirmed;
 		this.book = book;
@@ -48,7 +48,7 @@ public class Order extends AbstractEntity{
 
 	@Override
 	public String toString() {
-		return "Order [confirmed=" + confirmed + ", book=" + book + "]";
+		return "Basket [confirmed=" + confirmed + ", book=" + book + "]";
 	}
 
 	

@@ -1,8 +1,5 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -10,7 +7,7 @@ import javax.persistence.Persistence;
 import entities.Author;
 import entities.Book;
 import entities.Category;
-import entities.Order;
+import entities.Basket;
 import entities.User;
 
 public class Main {
@@ -38,24 +35,24 @@ public class Main {
 		author.setLastName("Accient");
 		
 		Category category = new Category();
-		category.setTypeOfCategory("Sience");
+		category.setTypeOfCategory("Advanture");
 		
 		Book book = new Book();
 		book.setAuthor(author);
 		book.setCategory(category);
-		book.setDescription("Not interesting book");
-		book.setName("Math");
+		book.setDescription("Very interesting book");
+		book.setName("Harry Potter");
 		
-		Order order = new Order();
-		book = em.find(Book.class, 1);
-		order.setBook(book);
-//		order.setConfirmed(false);
+		Basket basket = new Basket();
+		basket.setId(3);
+		basket.setBook(book);
 		
-		em.persist(user);
+		
+//		em.persist(user);
 		em.persist(category);
 		em.persist(author);
 		em.persist(book);
-		em.persist(order);
+		em.persist(basket);
 		
 		em.getTransaction().commit();
 		

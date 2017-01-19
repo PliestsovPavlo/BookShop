@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,15 +17,14 @@ public class User extends AbstractEntity{
 	private String password;
 	
 	@OneToMany(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_order")
-	private List<Order> orders = new ArrayList<>();
+	private List<Basket> baskets = new ArrayList<>();
 	
-	public User(String name, String email, String password, List<Order> orders) {
+	public User(String name, String email, String password, List<Basket> baskets) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.orders = orders;
+		this.baskets = baskets;
 	}
 
 	public User() {
@@ -57,17 +55,18 @@ public class User extends AbstractEntity{
 	}
 
 		
-	public List<Order> getOrders() {
-		return orders;
+	
+	public List<Basket> getBaskets() {
+		return baskets;
 	}
 
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
+	public void setBaskets(List<Basket> baskets) {
+		this.baskets = baskets;
 	}
 
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", email=" + email + ", password=" + password + ", orders=" + orders + "]";
+		return "User [name=" + name + ", email=" + email + ", password=" + password + ", orders=" + baskets + "]";
 	}
 	
 	
