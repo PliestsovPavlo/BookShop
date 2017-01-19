@@ -15,6 +15,9 @@ public class Book extends AbstractEntity{
 	@Column(name="name")
 	private String name;
 	
+	@Column(name="price")
+	private Double price;
+	
 	@Column(name="description")
 	private String description;
 	
@@ -31,13 +34,16 @@ public class Book extends AbstractEntity{
 
 	}
 
-	public Book(String name, String description, Author author, Category category) {
+	public Book(String name, Double price, String description, Author author, Category category) {
 		super();
 		this.name = name;
+		this.price = price;
 		this.description = description;
 		this.author = author;
 		this.category = category;
 	}
+
+
 
 	public String getName() {
 		return name;
@@ -46,6 +52,15 @@ public class Book extends AbstractEntity{
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
 
 	public String getDescription() {
 		return description;
@@ -73,7 +88,8 @@ public class Book extends AbstractEntity{
 
 	@Override
 	public String toString() {
-		return "Book [name=" + name + ", description=" + description + ", author=" + author + ", category=" + category + "]";
+		return "Book [name=" + name + ", price=" + price + ", description=" + description + ", author=" + author
+				+ ", category=" + category + "]";
 	} 
 	
 	
