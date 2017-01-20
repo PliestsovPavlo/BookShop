@@ -3,6 +3,7 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -13,18 +14,20 @@ import javax.persistence.Table;
 public class User extends AbstractEntity{
 
 	private String name;
+	
+	@Column(name="email", unique=true)
 	private String email;
 	private String password;
 	
 	@OneToMany(fetch=FetchType.LAZY)
-	private List<Basket> baskets = new ArrayList<>();
+	private List<Basket> basket = new ArrayList<>();
 	
 	public User(String name, String email, String password, List<Basket> baskets) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.baskets = baskets;
+		this.basket = baskets;
 	}
 
 	public User() {
@@ -57,16 +60,16 @@ public class User extends AbstractEntity{
 		
 	
 	public List<Basket> getBaskets() {
-		return baskets;
+		return basket;
 	}
 
 	public void setBaskets(List<Basket> baskets) {
-		this.baskets = baskets;
+		this.basket = baskets;
 	}
 
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", email=" + email + ", password=" + password + ", baskets=" + baskets + "]";
+		return "User [name=" + name + ", email=" + email + ", password=" + password + "]";
 	}
 
 	

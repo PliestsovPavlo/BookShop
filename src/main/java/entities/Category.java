@@ -32,7 +32,7 @@ public class Category extends AbstractEntity{
 
 	@Override
 	public String toString() {
-		return "Genre [typeOfGenre=" + typeOfCategory + "]";
+		return "Category [typeOfCategory=" + typeOfCategory + "]";
 	}
 
 	

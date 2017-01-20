@@ -88,8 +88,7 @@ public class Book extends AbstractEntity{
 
 	@Override
 	public String toString() {
-		return "Book [name=" + name + ", price=" + price + ", description=" + description + ", author=" + author
-				+ ", category=" + category + "]";
+		return "Book [name=" + name + ", price=" + price + ", description=" + description + "]";
 	} 
 	
 	

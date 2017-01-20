@@ -1,26 +1,53 @@
 package main;
 
-import java.util.List;
-
+import dao.AuthorDao;
+import dao.AuthorDaoImpl;
+import dao.BasketDao;
+import dao.BasketDaoImpl;
+import dao.BookDao;
+import dao.BookDaoImpl;
+import dao.CategoryDao;
+import dao.CategoryDaoImpl;
 import dao.UserDao;
 import dao.UserDaoImpl;
+import entities.Author;
+import entities.Basket;
+import entities.Book;
+import entities.Category;
 import entities.User;
 
 public class Main {
 
 	public static void main(String[] args) {
+		
+		UserDao userDao = new UserDaoImpl();
+		
+		User user = userDao.findUserById(1);
+		Basket basket = new Basket();
+		basket.setUser(user);
+		BookDao bookDao = new BookDaoImpl();
+//		CategoryDao categoryDao = new CategoryDaoImpl();
+//		Category category = categoryDao.findCategoryById(1);
+//		AuthorDao authorDao = new AuthorDaoImpl();
+//		Author author = authorDao.findAuthorById(1);
+//		Book book = new Book("ABC", 20.9, "aaa", author, category);
+//		bookDao.addBook(book);
+		Book book = bookDao.findBookById(2);
+		basket.setBook(book);
+		BasketDao basketDao = new BasketDaoImpl();
+		basketDao.addBasket(basket);
 	
 //		User user = new User();
 //		user.setName("psp");
-//		user.setEmail("pspalfa@gmail.com");
+//		user.setEmail("admin@gmail.com");
 //		user.setPassword("pass");
 //		
-		UserDao userDao = new UserDaoImpl();
+//		UserDao userDao = new UserDaoImpl();
 //		userDao.addUser(user);
-//		User user = userDao.findUserById(1);
+//		 user = userDao.findUserById(1);
 //		user.setName("psp");
-//		userDao.updateUser(user);
 //		System.out.println(user.toString());
+//		
 //		Author author = new Author();
 //		author.setFirstName("J.");
 //		author.setLastName("Rolling");
@@ -35,8 +62,8 @@ public class Main {
 //		categoryDao.addCategory(category);
 //		
 //		Book book = new Book();
-//		book.setAuthor(author);
-//		book.setCategory(category);
+//		book.setAuthor(authorDao.findAuthorById(1));
+//		book.setCategory(categoryDao.findCategoryById(1));
 //		book.setDescription("Very interesting book");
 //		book.setName("Harry Potter");
 //		book.setPrice(302.60);
@@ -50,18 +77,13 @@ public class Main {
 //		BasketDao basketDao = new BasketDaoImpl();
 //		basketDao.addBasket(basket);
 //		
-//		System.out.println(user.toString());
-//		userDao.updateUser(user);
-//		User user2 = userDao.findUserById(1);
-//		System.out.println(user2.toString());
-		
-		
-		List<User>users = userDao.findAllUser();
-		for (User user2 : users) {
-			System.out.println(user2.toString());
-			
-		}
-		
+//				
+//		List<User>users = userDao.findAllUser();
+//		for (User user2 : users) {
+//			System.out.println(user2.toString());
+//			
+//		}
+//		
 //		List<Book> books = bookDao.findAllBooks();
 //		for (Book book2 : books) {
 //			System.out.println(book2);
