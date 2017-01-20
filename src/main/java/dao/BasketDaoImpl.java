@@ -64,7 +64,7 @@ public class BasketDaoImpl implements BasketDao{
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 		EntityManager em = factory.createEntityManager();
 		em.getTransaction().begin();
-			List<Basket> baskets = em.createQuery("from Busket").getResultList();
+			List<Basket> baskets = em.createQuery("from Basket").getResultList();
 		em.getTransaction().commit();
 		em.close();
 		factory.close();

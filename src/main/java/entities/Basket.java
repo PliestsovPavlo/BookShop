@@ -62,7 +62,7 @@ public class Basket extends AbstractEntity{
 
 	@Override
 	public String toString() {
-		return "Basket [confirmed=" + confirmed + ", book=" + book + "]";
+		return "Basket [user=" + user + ", confirmed=" + confirmed + "]";
 	}
 
 	

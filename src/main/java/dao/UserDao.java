@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import entities.Basket;
 import entities.User;
 
 public interface UserDao {
@@ -11,5 +12,6 @@ public interface UserDao {
 	public void deleteUser(User user);
 	public User findUserById(int id);
 	public List<User> findAllUser();
+	public List<Basket> findBasketsByUserId(int id);
 
 }

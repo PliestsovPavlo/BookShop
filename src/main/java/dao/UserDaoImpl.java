@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import entities.Basket;
 import entities.User;
 
 public class UserDaoImpl implements UserDao{
@@ -69,6 +70,20 @@ public class UserDaoImpl implements UserDao{
 		em.close();
 		factory.close();
 		return users;
+	}
+
+	@Override
+	public List<Basket> findBasketsByUserId(int id) {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
+		EntityManager em = factory.createEntityManager();
+		List<Basket> baskets = em.createQuery("select u from user u join u.basket b where b.id = :id", Basket.class)
+				.setParameter("id", id)
+				.getResultList();
+		em.getTransaction().commit();
+		em.close();
+		factory.close();
+		
+		return baskets;
 	}
 
 	
