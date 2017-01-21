@@ -10,5 +10,11 @@ public class IndexConroller {
 	public String index(){
 		return "index";
 	}
-
+	
+	@GetMapping("/admin")
+	public String admin(){
+		return "/admin";
+	}
+	
+	
 }

@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>Hello</h3>
-
-<a href="/admin">admin</a>
-
+admin
 </body>
 </html>
