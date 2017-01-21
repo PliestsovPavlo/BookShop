@@ -1,9 +1,9 @@
-package dao;
+package ua.dao;
 
 import java.util.List;
 
-import entities.Basket;
-import entities.User;
+import ua.entity.Basket;
+import ua.entity.User;
 
 public interface UserDao {
 	

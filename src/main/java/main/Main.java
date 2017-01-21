@@ -5,21 +5,21 @@ import java.util.Scanner;
 
 import org.hibernate.SessionFactory;
 
-import dao.AuthorDao;
-import dao.AuthorDaoImpl;
-import dao.BasketDao;
-import dao.BasketDaoImpl;
-import dao.BookDao;
-import dao.BookDaoImpl;
-import dao.CategoryDao;
-import dao.CategoryDaoImpl;
-import dao.UserDao;
-import dao.UserDaoImpl;
-import entities.Author;
-import entities.Basket;
-import entities.Book;
-import entities.Category;
-import entities.User;
+import ua.dao.AuthorDao;
+import ua.dao.AuthorDaoImpl;
+import ua.dao.BasketDao;
+import ua.dao.BasketDaoImpl;
+import ua.dao.BookDao;
+import ua.dao.BookDaoImpl;
+import ua.dao.CategoryDao;
+import ua.dao.CategoryDaoImpl;
+import ua.dao.UserDao;
+import ua.dao.UserDaoImpl;
+import ua.entity.Author;
+import ua.entity.Basket;
+import ua.entity.Book;
+import ua.entity.Category;
+import ua.entity.User;
 
 public class Main {
 	

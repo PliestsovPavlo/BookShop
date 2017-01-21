@@ -1,4 +1,4 @@
-package dao;
+package ua.dao;
 
 import java.util.List;
 
@@ -7,87 +7,69 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import entities.Basket;
-import entities.User;
+import ua.entity.Category;
 
-public class UserDaoImpl implements UserDao{
-	
+public class CategoryDaoImpl implements CategoryDao{
+
 	@Override
-	public void addUser(User user) {
-		
+	public void addCategory(Category category) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 		EntityManager em = factory.createEntityManager();
 		em.getTransaction().begin();
-		em.persist(user);
+		em.persist(category);
 		em.getTransaction().commit();
 		em.close();
-		factory.close();
-		
+		factory.close();		
 	}
 
 	@Override
-	public void updateUser(User user) {
-
+	public void updateCategory(Category category) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 		EntityManager em = factory.createEntityManager();
 		em.getTransaction().begin();
-		em.merge(user);
+		em.merge(category);
 		em.getTransaction().commit();
 		em.close();
-		factory.close();
+		factory.close();			
 	}
 
 	@Override
-	public void deleteUser(User user) {
-		
+	public void deleteCategory(Category category) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 		EntityManager em = factory.createEntityManager();
 		em.getTransaction().begin();
-		Query query = em.createQuery("DELETE FROM User u where u.id=:id").setParameter("id", user.getId());
+		Query query = em.createQuery("DELETE FROM Category c where c.id=:id").setParameter("id", category.getId());
 		query.executeUpdate();
 		em.getTransaction().commit();
 		em.close();
-		factory.close();
-		System.out.println("sucess");
-		
+		factory.close();			
 	}
 
 	@Override
-	public User findUserById(int id) {
-		
+	public Category findCategoryById(int id) {
+
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 		EntityManager em = factory.createEntityManager();
 		em.getTransaction().begin();
-		User user = em.find(User.class, id);
+		Category category = em.find(Category.class, id);
 		em.getTransaction().commit();
 		em.close();
-		factory.close();
-		return user;
-	}
-
-	@Override
-	public List<User> findAllUser() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
-		EntityManager em = factory.createEntityManager();
-		List<User> users = em.createQuery("from User").getResultList();
-		em.close();
-		factory.close();
-		return users;
-	}
-
-	@Override
-	public List<Basket> findBasketsByUserId(User user) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
-		EntityManager em = factory.createEntityManager();
-		List<Basket> baskets = em.createQuery("select b from User u join u.basket b where u.id = :id", Basket.class)
-				.setParameter("id", user.getId())
-				.getResultList();
-//		em.getTransaction().commit();
-		em.close();
-		factory.close();
+		factory.close();	
 		
-		return baskets;
+		return category;
 	}
 
-	
+	@Override
+	public List<Category> findAllCategories() {
+
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
+		EntityManager em = factory.createEntityManager();
+		em.getTransaction().begin();
+		List<Category>categories = em.createQuery("from Category").getResultList();
+		em.getTransaction().commit();
+		em.close();
+		factory.close();	
+		return categories;
+	}
+
 }

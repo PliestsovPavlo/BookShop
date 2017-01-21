@@ -1,8 +1,8 @@
-package dao;
+package ua.dao;
 
 import java.util.List;
 
-import entities.Basket;
+import ua.entity.Basket;
 
 public interface BasketDao {
 	

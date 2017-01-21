@@ -1,8 +1,8 @@
-package dao;
+package ua.dao;
 
 import java.util.List;
 
-import entities.Category;
+import ua.entity.Category;
 
 public interface CategoryDao {
 	

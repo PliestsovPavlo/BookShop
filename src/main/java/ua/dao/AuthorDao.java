@@ -1,8 +1,8 @@
-package dao;
+package ua.dao;
 
 import java.util.List;
 
-import entities.Author;
+import ua.entity.Author;
 
 public interface AuthorDao {
 	
