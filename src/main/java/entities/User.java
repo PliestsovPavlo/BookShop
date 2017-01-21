@@ -19,7 +19,7 @@ public class User extends AbstractEntity{
 	private String email;
 	private String password;
 	
-	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="user")
 	private List<Basket> basket = new ArrayList<>();
 	
 	public User(String name, String email, String password, List<Basket> baskets) {

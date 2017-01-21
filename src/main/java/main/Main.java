@@ -3,6 +3,8 @@ package main;
 import java.util.List;
 import java.util.Scanner;
 
+import org.hibernate.SessionFactory;
+
 import dao.AuthorDao;
 import dao.AuthorDaoImpl;
 import dao.BasketDao;
@@ -32,7 +34,8 @@ public class Main {
 	 private static CategoryDao categoryDao = new CategoryDaoImpl();
 	 private static Basket basket = new Basket();
 	 private static BasketDao basketDao = new BasketDaoImpl();
-
+	 
+	 
 	public static void main(String[] args) {
 		
 		boolean isRun = true;
@@ -101,9 +104,9 @@ public class Main {
 					List<User> users = userDao.findAllUser();
 					for (User user : users) {
 						System.out.println(user.toString());
-					}
+					}break;
 				
-			}
+			}break;
 				
 			case "2":
 				System.out.println("1: Add book");
@@ -182,7 +185,7 @@ public class Main {
 					}
 					break;
 				
-				}
+				}break;
 			case "3":
 				System.out.println("1: add");
 				System.out.println("2: update");
@@ -214,7 +217,7 @@ public class Main {
 						author.setLastName(sc.next());
 						authorDao.updateAuthor(author);
 						break;
-					}
+					}break;
 				case "3":
 					System.out.println("Enter id author to delete");
 					author = authorDao.findAuthorById(sc.nextInt());
@@ -231,7 +234,7 @@ public class Main {
 						System.out.println(author.toString());
 					}
 					break;
-				}
+				}break;
 			case "4":
 				System.out.println("1: add");
 				System.out.println("2: confirm");
@@ -256,12 +259,12 @@ public class Main {
 					break;
 				case "3":
 					System.out.println("all baskets of user by id");
-					List<Basket>baskets = userDao.findBasketsByUserId(1);
+					user = userDao.findUserById(sc.nextInt());
+					List<Basket>baskets = userDao.findBasketsByUserId(user);
 					for (Basket basket : baskets) {
 						System.out.println(basket.toString());
 					}
 
-				default:
 					break;
 				}
 				

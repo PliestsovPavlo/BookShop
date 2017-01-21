@@ -12,6 +12,6 @@ public interface UserDao {
 	public void deleteUser(User user);
 	public User findUserById(int id);
 	public List<User> findAllUser();
-	public List<Basket> findBasketsByUserId(int id);
+	public List<Basket> findBasketsByUserId(User user);
 
 }

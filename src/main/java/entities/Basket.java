@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name="basket")
 public class Basket extends AbstractEntity{
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name="id_user")
 	private User user;
 	

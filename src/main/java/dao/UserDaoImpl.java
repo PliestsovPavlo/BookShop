@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import entities.Basket;
 import entities.User;
@@ -42,10 +43,12 @@ public class UserDaoImpl implements UserDao{
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 		EntityManager em = factory.createEntityManager();
 		em.getTransaction().begin();
-		em.remove(user);
+		Query query = em.createQuery("DELETE FROM User u where u.id=:id").setParameter("id", user.getId());
+		query.executeUpdate();
 		em.getTransaction().commit();
 		em.close();
 		factory.close();
+		System.out.println("sucess");
 		
 	}
 
@@ -73,13 +76,13 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public List<Basket> findBasketsByUserId(int id) {
+	public List<Basket> findBasketsByUserId(User user) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 		EntityManager em = factory.createEntityManager();
-		List<Basket> baskets = em.createQuery("select u from user u join u.basket b where b.id = :id", Basket.class)
-				.setParameter("id", id)
+		List<Basket> baskets = em.createQuery("select b from User u join u.basket b where u.id = :id", Basket.class)
+				.setParameter("id", user.getId())
 				.getResultList();
-		em.getTransaction().commit();
+//		em.getTransaction().commit();
 		em.close();
 		factory.close();
 		

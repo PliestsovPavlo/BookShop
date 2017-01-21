@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import entities.Book;
 
@@ -42,7 +43,8 @@ public class BookDaoImpl implements BookDao{
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 		EntityManager em = factory.createEntityManager();
 		em.getTransaction().begin();
-		em.remove(book);
+		Query query = em.createQuery("DELETE FROM Book b where b.id=:id").setParameter("id", book.getId());
+		query.executeUpdate();
 		em.getTransaction().commit();
 		em.close();
 		factory.close();		

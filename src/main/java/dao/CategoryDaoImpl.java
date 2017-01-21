@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import entities.Category;
 
@@ -37,7 +38,8 @@ public class CategoryDaoImpl implements CategoryDao{
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 		EntityManager em = factory.createEntityManager();
 		em.getTransaction().begin();
-		em.remove(category);
+		Query query = em.createQuery("DELETE FROM Category c where c.id=:id").setParameter("id", category.getId());
+		query.executeUpdate();
 		em.getTransaction().commit();
 		em.close();
 		factory.close();			

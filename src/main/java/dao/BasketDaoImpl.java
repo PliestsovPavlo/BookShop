@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import entities.Basket;
 
@@ -39,7 +40,8 @@ public class BasketDaoImpl implements BasketDao{
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 		EntityManager em = factory.createEntityManager();
 		em.getTransaction().begin();
-		em.remove(basket);
+		Query query = em.createQuery("DELETE FROM Basket b where b.id=:id").setParameter("id", basket.getId());
+		query.executeUpdate();
 		em.getTransaction().commit();
 		em.close();
 		factory.close();		
